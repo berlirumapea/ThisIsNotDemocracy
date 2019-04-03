@@ -1,0 +1,119 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #10161d;
+}
+
+.App {
+  font-family: sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.poll-container {
+  border: 1px solid #38444d;
+  border-radius: 4px;
+  /* height: 300px; */
+  width: 400px;
+  background-color: #151f2a;
+  padding: 2em;
+  /* padding-bottom: 2em; */
+}
+
+.poll-description {
+  font-size: 14px;
+  color: rgb(175, 175, 175);
+  margin-top: 1.5em;
+  padding-top: 8px;
+  border-top: 1px solid #38444d;
+}
+
+.poll-question {
+  margin: 0;
+  color: rgb(175, 175, 175);
+  margin-bottom: 1em;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.bar-button {
+  display: block;
+  color: rgb(175, 175, 175);
+  background-color: transparent;
+  width: 100%;
+  font-size: 14px;
+  padding: 1em 2em;
+  border: 1px solid #38444d;
+  border-radius: 25px;
+  margin-bottom: 1em;
+  cursor: pointer;
+}
+
+.bar-button:last-of-type {
+  margin-bottom: 0;
+}
+
+.bar-open {
+  display: block;
+  border: 1px solid transparent;
+  color: rgb(175, 175, 175);
+  background-color: transparent;
+  width: 100%;
+  font-size: 14px;
+  padding: 1em 0;
+  padding-left: 1em;
+  position: relative;
+  margin-bottom: 1em;
+  z-index: 1;
+}
+
+.bar-open:last-of-type {
+  margin-bottom: 0;
+}
+
+.bar-checkmark {
+  background: url("https://ton.twimg.com/tfw/assets/checkmark_circle_v1_06f15f494d711c69b89c759b68d1fcbbecdca631.svg");
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  transition: width 0.3s cubic-bezier(0.5, 1.2, 0.5, 1.2);
+  padding: 0.2rem;
+  background-size: 100%;
+  margin-left: 4px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  vertical-align: top;
+  filter: invert(54%) sepia(5%) saturate(3586%) hue-rotate(314deg)
+    brightness(112%) contrast(96%);
+}
+
+.bar-open-percentage {
+  background-color: #38444d;
+
+  border-radius: 5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: -1;
+  transition: width 1000ms ease-in-out;
+}
+
+.bar-open-percentage-not-100 {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.bar:active {
+  outline: none;
+}
+
+.floatRight {
+  float: right;
+}

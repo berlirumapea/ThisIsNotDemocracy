@@ -5,6 +5,7 @@ import { PollContext } from "../context";
 import PollContainer from "../PollContainer";
 import moment from "moment";
 
+// doesn't work on codesandbox
 afterEach(cleanup);
 
 function render(ui) {
@@ -35,6 +36,7 @@ function render(ui) {
   return rtlRender(ui, { wrapper: Wrapper });
 }
 
+// uncomment if you run this not in codesandbox
 // describe("render properly", () => {
 //   const { getByText, getAllByTestId, getByTestId } = render(<PollContainer />);
 

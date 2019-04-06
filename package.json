@@ -1,15 +1,16 @@
 {
-  "name": "react-twitter-like-poll-component",
+  "name": "thisisnotdemocracy",
   "version": "1.0.0",
   "description": "",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
-    "jest": "24.7.0",
+    "jest": "24.7.1",
+    "moment": "2.24.0",
     "react": "16.8.3",
     "react-dom": "16.8.3",
     "react-scripts": "2.1.8",
-    "react-testing-library": "6.0.4"
+    "react-testing-library": "6.1.2"
   },
   "devDependencies": {
     "typescript": "3.3.3"

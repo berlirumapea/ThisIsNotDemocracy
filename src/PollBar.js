@@ -1,68 +1,38 @@
 import React from "react";
+import useBar from "./useBar";
+import { PollContext } from "./context";
 
-const PollBar = ({
-  data,
-  onClick,
-  isPicked,
-  totalVotes,
-  playAround,
-  contestantPicked
-}) => {
-  const getPercentage = () => {
-    const percen = ((data.picks || 0) / (totalVotes || 0)) * 100;
-    if (isNaN(percen)) {
-      return 0;
-    }
-    return Math.round(percen);
-  };
-
-  const addAdditionalPercentageValueForTheSakeOfUI = () => {
-    if (getPercentage() < 100 && getPercentage() !== 0) {
-      return getPercentage() + 20 + "%";
-    }
-    return getPercentage() + "%";
-  };
-
-  const barBorderRadiusClasses = () => {
-    let borderRadiusClasses = [
-      "bar-open-percentage",
-      "bar-open-percentage-not-100"
-    ];
-    if (getPercentage() === 100) {
-      return borderRadiusClasses[0];
-    }
-    return borderRadiusClasses.join(" ");
-  };
-
+export default function PollBar({ contestant }) {
+  const { state } = React.useContext(PollContext);
+  const { vote, percentage, ui } = useBar(contestant);
   return (
-    <>
+    <div className="bar-container" data-testid="pollbar">
       <button
         className="bar-button"
-        onClick={() => onClick(data)}
-        style={!isPicked ? { display: "block" } : { display: "none" }}
+        style={!state.theChosenOne ? { display: "block" } : { display: "none" }}
+        onClick={vote}
       >
-        {data.label}
+        {contestant.label}
       </button>
 
       <div
+        data-testid="bar-percentage"
         className="bar-open"
-        onClick={() => playAround && onClick(data)}
-        style={isPicked ? { display: "block" } : { display: "none" }}
+        style={state.theChosenOne ? { display: "block" } : { display: "none" }}
+        onClick={() => state.playAround && vote()}
       >
         <span className="bar-label">
-          {data.label}
-          {data.value === contestantPicked && (
+          {contestant.label}
+          {state.theChosenOne === contestant.value && (
             <span className="bar-checkmark" />
           )}
         </span>
-        <span className="floatRight">{getPercentage() + "%"}</span>
+        <span className="floatRight">{percentage}%</span>
         <div
-          className={barBorderRadiusClasses()}
-          style={{ width: addAdditionalPercentageValueForTheSakeOfUI() }}
+          className={ui().borderRightRadius()}
+          style={{ width: ui().addMoreWidth() }}
         />
       </div>
-    </>
+    </div>
   );
-};
-
-export default PollBar;
+}

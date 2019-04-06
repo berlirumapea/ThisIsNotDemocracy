@@ -1,8 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
-import "./styles.css";
-import Polls from "./Polls";
+import moment from "moment";
+import ThisIsNotDemocracy from "./ThisIsNotDemocracy";
 
 const polls = {
   question:
@@ -21,13 +20,14 @@ const polls = {
       value: "na"
     }
   ],
-  until: "1 hour left"
+  until: moment(new Date()).add(2, "hours"),
+  playAround: true
 };
 
 function App() {
   return (
     <div className="App">
-      <Polls data={polls} playAround={true} />
+      <ThisIsNotDemocracy data={polls} />
     </div>
   );
 }
